@@ -1,5 +1,5 @@
 This fork contains some additional information about configuring and can be used to setup an SIP Gateway for Scalelite BBB Clusters.
-For use with greenlight, we recommend our https://github.com/MBcom/kubernetes-greenlight fork, with integrated static SIP Supoort, by setting `VOICE_BRIDGE_PHONE_NUMBER` environment variable.  
+For use with greenlight, we recommend our https://github.com/MBcom/enforce-authentication-greenlight fork, with integrated static SIP Supoort, by setting `VOICE_BRIDGE_PHONE_NUMBER` environment variable.  
   
 We tested this setup on Ubuntu 20.04 Server.
 

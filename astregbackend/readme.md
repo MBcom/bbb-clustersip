@@ -33,4 +33,4 @@ systemctl start astregbackend
 # Operating
 
 * ensure that the RedisExpiration is bigger than your SIP registration expirationtime! see `astregbackend.conf`
-* ensure that astregbackend parameter *digits* matches your BBB setting *defaultNumDigitsForTelVoice* (Defaults to 5 and https://github.com/MBcom/kubernetes-greenlight is using 5 digits too)
+* ensure that astregbackend parameter *digits* matches your BBB setting *defaultNumDigitsForTelVoice* (Defaults to 5 and https://github.com/MBcom/enforce-authentication-greenlight is using 5 digits too)
