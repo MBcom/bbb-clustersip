@@ -31,13 +31,14 @@ You propably want to build it once and deploy everything with ansible.
 
 ```
 # install golang on ubuntu 16.04
-apt install golang-1.10
+apt install golang-1.10 git
 
 # get and build fsconfregger
-/usr/lib/go-1.10/bin/go get github.com/denzs/fsconfregger
+git clone https://github.com/MBcom/bbb-clustersip.git
+cd bbb-clustersip
+go build
 
-cd ~/go/src/github.com/denzs/fsconfregger
-cp ~/go/bin/fsconfregger sofia-generator.sh /usr/local/sbin/
+cp fsconfregger sofia-generator.sh /usr/local/sbin/
 cp fsconfregger.sample /etc/default/fsconfregger
 cp fsconfregger.service /etc/systemd/system/
 systemctl daemon-reload
@@ -45,7 +46,28 @@ systemctl enable fsconfregger
 systemctl start fsconfregger
 ```
 
+copy the password from `/opt/freeswitch/conf/autoload_configs/event_socket.conf.xml` and paste it to `/etc/default/fsconfregger`. Then restart the fsconfregger service `systemctl restart fsconfregger`.
 
+And insert the following in `/opt/freeswitch/conf/dialplan/public/sip-gw.xml` and insert the IP of your SIP Gateway Server (where asterisk runs) in the `expression` field. 
+
+```xml
+<extension name="from_asterisk">
+ <condition field="network_addr" expression="<the IP of the SIP gateway server>" />
+ <condition field="destination_number" expression="^(\d+)">
+         <action application="set_profile_var" data="caller_id_name=${regex(${caller_id_name}|^.*(.{4})$|xxx-xxx-%1)}"/>
+   <action application="set" data="bbb_authorized=true"/>
+   <action application="transfer" data="$1 XML default"/>
+ </condition>
+</extension>
+```
+
+Now run - and make sure that no conference is actually running.
+```bash
+systemctl restart freeswitch
+systemctl restart fsconfregger
+```
+
+## following for manual use only
 ### Parameters
 
 | Parameter | Default              | Description                                             |

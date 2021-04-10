@@ -11,6 +11,8 @@ cat > /opt/freeswitch/conf/sip_profiles/external/$1.xml << EOF
 
         <param name="extension" value="auto_to_user"/>
 
+		<param name="register-transport" value="tcp" />
+
 		<!-- <param name="extension" value="auto_to_user"/> -->
 		<param name="caller-id-in-from" value="true"/>
 

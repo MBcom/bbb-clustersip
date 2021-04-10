@@ -4,7 +4,6 @@ astregbackend is a small http service which can be used as realtime backend for 
 
 It generates PJSIP-Endpoints (endpoint, aor, auth) within a specific range of numbers when Asterisk asks for it.
 It takes a parameter 'digits'.
-Whith digits=3, it generates configuration for Endpoints 000-999.
 Whith digits=5, it generates configuration for Endpoints 00000-99999.
 
 After generating the configuration it is stored in a redis.
@@ -15,15 +14,14 @@ When executing 'pjsip show endpoints' for example.
 
 ```
 # install golang and redis
-sudo add-apt-repository ppa:longsleep/golang-backports
-sudo apt update
-sudo apt install golang-go redis-server
+sudo apt install golang-go redis-server git
 
 # get and build astregbackend
-go get github.com/denzs/astregbackend
+git clone https://github.com/MBcom/bbb-clustersip.git
+cd bbb-clustersip
+go build
 
-cd ~/go/src/github.com/denzs/astregbackend
-cp ~/go/bin/astregbackend /usr/local/sbin/
+cp astregbackend /usr/local/sbin/
 cp astregbackend.sample /etc/default/astregbackend
 cp astregbackend.service /etc/systemd/system/
 cp astregbackend.conf /etc
@@ -32,9 +30,7 @@ systemctl enable astregbackend
 systemctl start astregbackend
 ```
 
-See extconfig.conf and sorcery.conf for examples on how to use with Asterisk.
-
 # Operating
 
-* ensure that the RedisExpiration is bigger than your SIP registration expirationtime!
-* ensure that astregbackend parameter *digits* matches your BBB setting *defaultNumDigitsForTelVoice*
+* ensure that the RedisExpiration is bigger than your SIP registration expirationtime! see `astregbackend.conf`
+* ensure that astregbackend parameter *digits* matches your BBB setting *defaultNumDigitsForTelVoice* (Defaults to 5 and https://github.com/MBcom/kubernetes-greenlight is using 5 digits too)

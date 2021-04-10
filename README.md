@@ -1,3 +1,13 @@
+This fork contains some additional information about configuring and can be used to setup an SIP Gateway for Scalelite BBB Clusters.
+For use with greenlight, we recommend our https://github.com/MBcom/kubernetes-greenlight fork, with integrated static SIP Supoort, by setting `VOICE_BRIDGE_PHONE_NUMBER` environment variable.  
+  
+We tested this setup on Ubuntu 20.04 Server.
+
+# Setup
+
+* see folder astregbackend and ast_config for information on how to setup the SIP-Gateway.
+* see folder fsconfregger for information on how to setup a BBB-node.
+
 # Problem
 
 With BigBlueButton clusters (with Scalelite & Greenlight) one never knows on which Server the session will be processed.
@@ -21,10 +31,7 @@ The assigned phonenumber should be used for all your BBB-nodes as dialNumber.
 
 ![alt text][setup]
 
-# Setup
 
-* see folder astregbackend and ast_config for information on how to setup the SIP-Gateway.
-* see folder fsconfregger for information on how to setup a BBB-node.
 
 # Security
 

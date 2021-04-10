@@ -6,7 +6,7 @@ Should work with any Asterisk >= 13.0 with PJSIP.
 * copy configs from this folder to /etc/asterisk
 * adapt pjsip.conf to your needs
   * adapt transport section (see line 123 and below)
-  * adapt acl to your needs (see line 414 and below)
+  * adapt acl to your needs (see line 414 and below) (you can use multiple permit entries for all networks of your SIP provider, but it makes more sense to use an external firewall, because asterisk is spaming your log with denied SIP requests)
   * adapt upstream endpoint and registration to your needs (see line 944 and below)
 
 # Dialplan
