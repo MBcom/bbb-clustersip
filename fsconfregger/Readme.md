@@ -67,6 +67,14 @@ systemctl restart freeswitch
 systemctl restart fsconfregger
 ```
 
+Now change the following in
+`/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties`
+```
+defaultDialAccessNumber=<your SIP telephone number>
+defaultWelcomeMessageFooter=<br><br>To join this meeting by phone, dial:<br>  %%DIALNUM%%<br>Then enter %%CONFNUM%% as the conference PIN number. <br/> <br />This server is running <a href="https://docs.bigbluebutton.org/" target="_blank"><u>BigBlueButton</u></a>.
+```
+and restart BBB `bbb-conf --restart` (make sure that no conference is actually running).
+
 ## following for manual use only
 ### Parameters
 
