@@ -57,9 +57,9 @@ func (h *DummyHandler) Single(w http.ResponseWriter, r *http.Request) {
 		peer = v.(string)
 	}
 
-	if len(peer) != Config.Digits {
+	if len(peer) > Config.Digits {
 		if Config.Verbose {
-			log.Printf("len(%s) != %d -> ignore\n", peer, Config.Digits)
+			log.Printf("len(%s) > %d -> ignore\n", peer, Config.Digits)
 		}
 		return
 	}
