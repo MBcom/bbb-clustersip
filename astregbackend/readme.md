@@ -5,6 +5,7 @@ astregbackend is a small http service which can be used as realtime backend for 
 It generates PJSIP-Endpoints (endpoint, aor, auth) within a specific range of numbers when Asterisk asks for it.
 It takes a parameter 'digits'.
 Whith digits=5, it generates configuration for Endpoints 00000-99999.
+Recommend is a value of 11 because for breakout rooms the room number is attached to the PIN. So if you have a 5 digit default PIN length, you need minimum 6 digits for breakout rooms.
 
 After generating the configuration it is stored in a redis.
 This is neccessary to serve Asterisk a list of "all" generated endpoints.
