@@ -19,7 +19,7 @@ sudo apt install golang-go redis-server git
 
 # get and build astregbackend
 git clone https://github.com/MBcom/bbb-clustersip.git
-cd bbb-clustersip
+cd bbb-clustersip/astregbackend
 go build
 
 cp astregbackend /usr/local/sbin/
