@@ -12,7 +12,7 @@ route incoming SIP calls to the correct BigBlueButton instance.
 
 After all participants left the Room, the registration is cleaned up.
 
-To have stable conference numbers BBB requires you to set the parameter *voiceBridge* accordincly when the rooms is created.
+To have stable conference numbers BBB requires you to set the parameter *voiceBridge* accordingly when the rooms are created.
 At the moment Greenlight does not support this. So you are required to adapt it or find another way.
 
 ## Operation
@@ -27,7 +27,7 @@ Just adapt the systemd unitfile and the XML Generator script to your needs.
 ### Steps
 
 Example steps to build and setup on a BBB node.
-You propably want to build it once and deploy everything with ansible.
+You probably want to build it once and deploy everything with ansible.
 
 ```
 # install golang on ubuntu 16.04
