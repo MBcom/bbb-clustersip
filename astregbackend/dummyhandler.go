@@ -56,6 +56,13 @@ func (h *DummyHandler) Single(w http.ResponseWriter, r *http.Request) {
 	for _, v := range values {
 		peer = v.(string)
 	}
+	
+	if _, err := strconv.Atoi(peer); err != nil {
+               if Config.Verbose {
+                    fmt.Printf("%q looks not like a valid PIN.\n", peer)
+               }
+               return
+        }
 
 	if len(peer) > Config.Digits {
 		if Config.Verbose {
